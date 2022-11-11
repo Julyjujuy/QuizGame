@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using static QuizGame.Program;
 
 namespace QuizGame
@@ -12,24 +15,14 @@ namespace QuizGame
         static void Main(string[] args)
         {
             Methods.StartSession();
+            string question1 = Methods.AskQuestion();
+            string answer1 = Methods.AskAnswer();
+            string answer2 = Methods.AskAnswer();
+            string answer3 = Methods.AskAnswer();
 
-
-
-
-
-         QuizForm firstQuiz = new QuizForm();
+            var QandA = new Formular()
+            
 
         }
-
-        public class Questionnaire
-        {
-            public int QuestionNumber { get; set; }
-            public string FirstQuestion { get; set; }
-            public string RightAnswer { get; set; }
-            public string FalseAnswer1 { get; set; }
-            public string Falseanswer2 { get; set; }
-        }
-
-    }
     }
 }
