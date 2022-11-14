@@ -9,7 +9,6 @@ namespace QuizGame
 {
     internal class Formular
     {
-        
         string q1;
         string ans1;
         string ans2;
