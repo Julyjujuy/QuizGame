@@ -9,11 +9,10 @@ namespace QuizGame
 {
     internal class Formular
     {
-        string q1;
-        string ans1;
-        string ans2;
-        string ans3;
-
-        int correctAnswerHolder;
+        public string q1;
+        public string ans1;
+        public string ans2;
+        public string ans3;
+        public int rightAnswerInt = 0;
     }
 }
