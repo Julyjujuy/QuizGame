@@ -30,7 +30,7 @@ namespace QuizGame
                 ans3 = answer3,
                 rightAnswerInt = answerHolder
             };
-
+            
         }
     }
 }

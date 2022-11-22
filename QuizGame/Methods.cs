@@ -22,12 +22,13 @@ namespace QuizGame
             string a1 = Console.ReadLine();
             return a1;
         }
-        public static int AskAnswerHolder(int ansHolder)
+        public static int AskAnswerHolder()
         {
             Console.WriteLine("Tell me which question is the correct one: 1, 2, or 3?");
-
-            return (ansHolder - 1);
+            string rightAn = Console.ReadLine();
+            int rightAnNum = Convert.ToInt32(rightAn);
+            return rightAnNum;
         }
-
+        
     }
 }
