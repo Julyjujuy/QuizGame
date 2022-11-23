@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 using static QuizGame.Program;
 
 namespace QuizGame
@@ -30,7 +31,13 @@ namespace QuizGame
                 ans3 = answer3,
                 rightAnswerInt = answerHolder
             };
-            
+            XmlSerializer dataText = new XmlSerializer(typeof(List<Formular>));
+
+            var path = @"C:\Users\tanti\Desktop\C# projects\Project Data";
+            using (FileStream file = File.Create(path))
+            {
+                dataText.Serialize(file, QandA);
+            }
         }
     }
 }
