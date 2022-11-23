@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QuizGame
 {
-    internal class Formular
+    public class Formular
     {
         public string q1;
         public string ans1;

@@ -31,12 +31,12 @@ namespace QuizGame
                 ans3 = answer3,
                 rightAnswerInt = answerHolder
             };
-            XmlSerializer dataText = new XmlSerializer(typeof(List<Formular>));
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Formular>));
 
             var path = @"C:\Users\tanti\Desktop\C# projects\Project Data";
             using (FileStream file = File.Create(path))
             {
-                dataText.Serialize(file, QandA);
+                serializer.Serialize(file, QandA);
             }
         }
     }
