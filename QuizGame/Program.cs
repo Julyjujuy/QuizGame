@@ -31,9 +31,9 @@ namespace QuizGame
                 ans3 = answer3,
                 rightAnswerInt = answerHolder
             };
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Formular>));
+            XmlSerializer serializer = new XmlSerializer(typeof(Formular));
 
-            var path = @"C:\Users\tanti\Desktop\C# projects\Project Data";
+            var path = @"C:\Users\tanti\Desktop\C# projects\Project Data\^dataquiz";
             using (FileStream file = File.Create(path))
             {
                 serializer.Serialize(file, QandA);
