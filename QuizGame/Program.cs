@@ -9,6 +9,7 @@ using System.Xml.Linq;
 using System.Xml.Serialization;
 using static QuizGame.Program;
 
+
 namespace QuizGame
 {
     internal class Program
@@ -33,10 +34,14 @@ namespace QuizGame
             };
             XmlSerializer serializer = new XmlSerializer(typeof(Formular));
 
-            var path = @"C:\Users\tanti\Desktop\C# projects\Project Data\^dataquiz";
+            var path = @"C:\Users\tanti\Desktop\C# projects\Project Data\^dataquiz.xml";
             using (FileStream file = File.Create(path))
             {
                 serializer.Serialize(file, QandA);
+            }
+            using (FileStream file = File.OpenRead(path))
+            {
+               QandA = serializer.Deserialize(file) as Formular;
             }
         }
     }
