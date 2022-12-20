@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace QuizGame
 {
     public class Formular
@@ -13,6 +14,7 @@ namespace QuizGame
         public string ans1;
         public string ans2;
         public string ans3;
-        public int rightAnswerInt;
+        public int answerIndex;
+        
     }
 }

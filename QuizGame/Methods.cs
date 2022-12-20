@@ -4,7 +4,7 @@
 
 namespace QuizGame
 {
-    internal class Methods
+    internal class UIMethods
     {
         public static void StartSession()
         {

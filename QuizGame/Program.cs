@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,13 +17,13 @@ namespace QuizGame
     {
         public static void Main(string[] args)
         {
-            Methods.StartSession();
+            UIMethods.StartSession();
             
-            string question1 = Methods.AskQuestion();
-            string answer1 = Methods.AskAnswer();
-            string answer2 = Methods.AskAnswer();
-            string answer3 = Methods.AskAnswer();
-            int answerHolder = Methods.AskAnswerHolder();
+            string question1 = UIMethods.AskQuestion();
+            string answer1 = UIMethods.AskAnswer();
+            string answer2 = UIMethods.AskAnswer();
+            string answer3 = UIMethods.AskAnswer();
+            int answerHolder = UIMethods.AskAnswerHolder();
 
             var QandA = new Formular()
             {
@@ -30,7 +31,7 @@ namespace QuizGame
                 ans1 = answer1,
                 ans2 = answer2,
                 ans3 = answer3,
-                rightAnswerInt = answerHolder
+                answerIndex = answerHolder
             };
             XmlSerializer serializer = new XmlSerializer(typeof(Formular));
 
@@ -43,6 +44,7 @@ namespace QuizGame
             {
                QandA = serializer.Deserialize(file) as Formular;
             }
+
         }
     }
 }
