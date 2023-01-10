@@ -14,7 +14,6 @@ namespace QuizGame
         public string ans1;
         public string ans2;
         public string ans3;
-        public int answerIndex;
-        
+        public int answerIndex; 
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Server;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,34 +18,33 @@ namespace QuizGame
     {
         public static void Main(string[] args)
         {
-            UIMethods.StartSession();
-            
-            string question1 = UIMethods.AskQuestion();
-            string answer1 = UIMethods.AskAnswer();
-            string answer2 = UIMethods.AskAnswer();
-            string answer3 = UIMethods.AskAnswer();
-            int answerHolder = UIMethods.AskAnswerHolder();
+            Formular form = new Formular();
+            form.q1 = UIMethods.AskQuestion();
+            form.ans1 = UIMethods.AskAnswer();
+            form.ans2 = UIMethods.AskAnswer();
+            form.ans3 = UIMethods.AskAnswer();
+            form.answerIndex = UIMethods.AskAnswerHolder();
 
-            var QandA = new Formular()
-            {
-                q1 = question1,
-                ans1 = answer1,
-                ans2 = answer2,
-                ans3 = answer3,
-                answerIndex = answerHolder
-            };
-            XmlSerializer serializer = new XmlSerializer(typeof(Formular));
+            List<Formular> QandA = new List<Formular>();
+            QandA.Add(form);
 
-            var path = @"C:\Users\tanti\Desktop\C# projects\Project Data\^dataquiz.xml";
+
+            string path = @"C:\Users\tanti\Desktop\C# projects\Project Data\dataquiz.xml";
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Formular>));
             using (FileStream file = File.Create(path))
             {
                 serializer.Serialize(file, QandA);
-            }
+            };
             using (FileStream file = File.OpenRead(path))
             {
-               QandA = serializer.Deserialize(file) as Formular;
+                QandA = (List<Formular>)serializer.Deserialize(file);
             }
-
+            foreach (Formular var in QandA)
+            {
+                UIMethods.DisplayQuestion(var.q1, var.ans1, var.ans2, var.ans3);
+                UIMethods.CheckAnswer(var.answerIndex);
+            }
+            UIMethods.LetsTakeAPause();
         }
     }
 }
