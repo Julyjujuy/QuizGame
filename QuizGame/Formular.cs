@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace QuizGame
 {
+    [Serializable]
     public class Formular
     {
         public string q1;

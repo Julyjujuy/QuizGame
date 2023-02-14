@@ -1,6 +1,8 @@
 ﻿using System;
-
-
+using System.Xml.Linq;
+using System.Xml.Serialization;
+using System.Collections.Generic;
+using System.IO;
 
 namespace QuizGame
 {
@@ -62,6 +64,23 @@ namespace QuizGame
             }
             if (count == 3)
                 Console.WriteLine("Sorry, you reached the maximum number of attempts. The correct answer is " + correctAnswer);
+        }
+        public static void Serialize(List<Formular> data, string path)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Formular>));
+            using (FileStream file = File.Create(path))
+            {
+                serializer.Serialize(file, data);
+            }
+        }
+
+        public static List<Formular> Deserialize(string path)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Formular>));
+            using (FileStream file = File.OpenRead(path))
+            {
+                return (List<Formular>)serializer.Deserialize(file);
+            }
         }
         public static void LetsTakeAPause()
         {
