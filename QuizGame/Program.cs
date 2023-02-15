@@ -18,42 +18,30 @@ namespace QuizGame
     {
         public static void Main(string[] args)
         {
-            Formular form = new Formular();
-            form.q1 = UIMethods.AskQuestion();
-            form.ans1 = UIMethods.AskAnswer();
-            form.ans2 = UIMethods.AskAnswer();
-            form.ans3 = UIMethods.AskAnswer();
-            form.answerIndex = UIMethods.AskAnswerHolder();
-
-            Formular form1 = new Formular();
-            form1.q1 = UIMethods.AskQuestion();
-            form1.ans1 = UIMethods.AskAnswer();
-            form1.ans2 = UIMethods.AskAnswer();
-            form1.ans3 = UIMethods.AskAnswer();
-            form1.answerIndex = UIMethods.AskAnswerHolder();
-
-            Formular form2 = new Formular();
-            form2.q1 = UIMethods.AskQuestion();
-            form2.ans1 = UIMethods.AskAnswer();
-            form2.ans2 = UIMethods.AskAnswer();
-            form2.ans3 = UIMethods.AskAnswer();
-            form2.answerIndex = UIMethods.AskAnswerHolder();
-
             List<Formular> QandA = new List<Formular>();
-            QandA.Add(form);
-            QandA.Add(form1);
-            QandA.Add(form2);
+
+            for (int i = 0; i < 3; i++)
+            {
+                Formular form = new Formular();
+                form.q1 = UIMethods.AskQuestion();
+                form.answers.Add(UIMethods.AskAnswer());
+                form.answers.Add(UIMethods.AskAnswer());
+                form.answers.Add(UIMethods.AskAnswer());
+                form.answerIndex = UIMethods.AskAnswerHolder();
+                QandA.Add(form);
+            }
+
 
             string path = @"C:\Users\tanti\OneDrive\Dokumente\dataquiz.xml";
-
             UIMethods.Serialize(QandA, path);
-
             QandA = UIMethods.Deserialize(path);
+
             foreach (Formular var in QandA)
             {
-                UIMethods.DisplayQuestion(var.q1, var.ans1, var.ans2, var.ans3);
+                UIMethods.DisplayQuestion(var.q1, var.answers[0], var.answers[1], var.answers[2]);
                 UIMethods.CheckAnswer(var.answerIndex);
             }
+
             UIMethods.LetsTakeAPause();
         }
     }

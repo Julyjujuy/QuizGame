@@ -73,7 +73,6 @@ namespace QuizGame
                 serializer.Serialize(file, data);
             }
         }
-
         public static List<Formular> Deserialize(string path)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<Formular>));

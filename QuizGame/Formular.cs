@@ -12,9 +12,13 @@ namespace QuizGame
     public class Formular
     {
         public string q1;
-        public string ans1;
-        public string ans2;
-        public string ans3;
-        public int answerIndex; 
+        public List<string> answers;
+        public int answerIndex;
+
+        public Formular()
+        {
+            answers = new List<string>();
+        }
     }
+
 }
