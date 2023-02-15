@@ -16,32 +16,32 @@ namespace QuizGame
 {
     internal class Program
     {
+        const int NR_ANSWERS = 3;
+        const int NR_QUESTIONS = 3;
+        const string FILE_PATH = @"C:\Users\tanti\OneDrive\Dokumente\dataquiz.xml";
         public static void Main(string[] args)
         {
-            List<Formular> QandA = new List<Formular>();
-
-            for (int i = 0; i < 3; i++)
+            List<Formular> qAndA = new List<Formular>();
+            for (int i = 0; i < NR_QUESTIONS; i++)
             {
                 Formular form = new Formular();
-                form.q1 = UIMethods.AskQuestion();
-                form.answers.Add(UIMethods.AskAnswer());
-                form.answers.Add(UIMethods.AskAnswer());
-                form.answers.Add(UIMethods.AskAnswer());
+                form.question1 = UIMethods.AskQuestion();
+
+                for (int j = 0; j < NR_ANSWERS; j++)
+                {
+                    form.answers.Add(UIMethods.AskAnswer());
+                }
+
                 form.answerIndex = UIMethods.AskAnswerHolder();
-                QandA.Add(form);
+                qAndA.Add(form);
             }
-
-
-            string path = @"C:\Users\tanti\OneDrive\Dokumente\dataquiz.xml";
-            UIMethods.Serialize(QandA, path);
-            QandA = UIMethods.Deserialize(path);
-
-            foreach (Formular var in QandA)
+            UIMethods.Serialize(qAndA, FILE_PATH);
+            qAndA = UIMethods.Deserialize(FILE_PATH);
+            foreach (Formular var in qAndA)
             {
-                UIMethods.DisplayQuestion(var.q1, var.answers[0], var.answers[1], var.answers[2]);
+                UIMethods.DisplayQuestion(var.question1, var.answers[0], var.answers[1], var.answers[2]);
                 UIMethods.CheckAnswer(var.answerIndex);
             }
-
             UIMethods.LetsTakeAPause();
         }
     }
