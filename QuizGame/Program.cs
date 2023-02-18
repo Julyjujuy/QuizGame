@@ -18,7 +18,8 @@ namespace QuizGame
     {
         const int NR_ANSWERS = 3;
         const int NR_QUESTIONS = 3;
-        const string FILE_PATH = @"C:\Users\tanti\OneDrive\Dokumente\dataquiz.xml";
+        static string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "dataquiz.xml");
+
         public static void Main(string[] args)
         {
             List<Formular> qAndA = new List<Formular>();
@@ -35,8 +36,8 @@ namespace QuizGame
                 form.answerIndex = UIMethods.AskAnswerHolder();
                 qAndA.Add(form);
             }
-            UIMethods.Serialize(qAndA, FILE_PATH);
-            qAndA = UIMethods.Deserialize(FILE_PATH);
+            UIMethods.Serialize(qAndA, filePath);
+            qAndA = UIMethods.Deserialize(filePath);
             foreach (Formular var in qAndA)
             {
                 UIMethods.DisplayQuestion(var.question1, var.answers[0], var.answers[1], var.answers[2]);
