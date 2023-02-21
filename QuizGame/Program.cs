@@ -1,15 +1,7 @@
-﻿using Microsoft.SqlServer.Server;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using System.Xml.Serialization;
-using static QuizGame.Program;
+
 
 
 namespace QuizGame
@@ -36,12 +28,12 @@ namespace QuizGame
                 form.answerIndex = UIMethods.AskAnswerHolder();
                 qAndA.Add(form);
             }
-            UIMethods.Serialize(qAndA, filePath);
-            qAndA = UIMethods.Deserialize(filePath);
+            LogicMethods.Serialize(qAndA, filePath);
+            qAndA = LogicMethods.Deserialize(filePath);
             foreach (Formular var in qAndA)
             {
                 UIMethods.DisplayQuestion(var.question1, var.answers[0], var.answers[1], var.answers[2]);
-                UIMethods.CheckAnswer(var.answerIndex);
+                LogicMethods.CheckAnswer(var.answerIndex);
             }
             UIMethods.LetsTakeAPause();
         }
