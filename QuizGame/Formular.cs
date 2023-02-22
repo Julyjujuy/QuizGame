@@ -5,7 +5,7 @@ namespace QuizGame
     [Serializable]
     public class Formular
     {
-        public string question1;
+        public string question;
         public List<string> answers;
         public int answerIndex;
         public Formular()

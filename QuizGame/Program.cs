@@ -18,7 +18,7 @@ namespace QuizGame
             for (int i = 0; i < NR_QUESTIONS; i++)
             {
                 Formular form = new Formular();
-                form.question1 = UIMethods.AskQuestion();
+                form.question = UIMethods.AskQuestion();
 
                 for (int j = 0; j < NR_ANSWERS; j++)
                 {
@@ -30,11 +30,15 @@ namespace QuizGame
             }
             LogicMethods.Serialize(qAndA, filePath);
             qAndA = LogicMethods.Deserialize(filePath);
-            foreach (Formular var in qAndA)
+            foreach (Formular formular in qAndA)
             {
-                UIMethods.DisplayQuestion(var.question1, var.answers[0], var.answers[1], var.answers[2]);
-                LogicMethods.CheckAnswer(var.answerIndex);
+                string question = formular.question;
+                List<string> answers = formular.answers;
+
+                UIMethods.DisplayQuestion(question, answers);
+                LogicMethods.CheckAnswer(formular.answerIndex);
             }
+
             UIMethods.LetsTakeAPause();
         }
     }

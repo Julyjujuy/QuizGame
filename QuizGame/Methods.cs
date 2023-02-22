@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace QuizGame
 {
@@ -31,14 +32,16 @@ namespace QuizGame
             }
             return rightAnIndex;
         }
-        public static void DisplayQuestion(string question, string answer1, string answer2, string answer3)
+        public static void DisplayQuestion(string question, List<string> answers)
         {
             Console.WriteLine($"Question: {question}");
-            Console.WriteLine($"Answer 1: {answer1}");
-            Console.WriteLine($"Answer 2: {answer2}");
-            Console.WriteLine($"Answer 3: {answer3}");
-            Console.WriteLine("Please input your answer (1, 2 or 3)");
+            for (int i = 0; i < answers.Count; i++)
+            {
+                Console.WriteLine($"Answer {i + 1}: {answers[i]}");
+            }
+            Console.WriteLine($"Please input your answer (1 - {answers.Count})");
         }
+
         public static void LetsTakeAPause()
         {
             Console.ReadLine();
