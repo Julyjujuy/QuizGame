@@ -46,6 +46,24 @@ namespace QuizGame
         {
             Console.ReadLine();
         }
+        public static bool AskToPlayAgain()
+        {
+            Console.WriteLine("Do you want to play again? (Y/N)");
+            string input = Console.ReadLine().ToLower();
+            while (input != "y" && input != "n")
+            {
+                Console.WriteLine("Invalid input. Please enter Y or N.");
+                input = Console.ReadLine().ToLower();
+            }
+            return input == "y";
+        }
+
+        public static void EndGame()
+        {
+            Console.WriteLine("Thanks for playing the quiz game!");
+            Console.ReadLine();
+        }
+
 
     }
 }
