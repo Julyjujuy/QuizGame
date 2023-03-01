@@ -12,14 +12,12 @@ namespace QuizGame
         public static string AskQuestion()
         {
             Console.WriteLine("Please imput a question for this game. Information will be stored only during this session.");
-            string q1 = Console.ReadLine();
-            return q1;
+            return Console.ReadLine();
         }
         public static string AskAnswer()
         {
             Console.WriteLine("Please imput an answer to this question.");
-            string a1 = Console.ReadLine();
-            return a1;
+            return Console.ReadLine();
         }
         public static int AskAnswerHolder()
         {
