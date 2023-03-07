@@ -21,15 +21,23 @@ namespace QuizGame
         }
         public static int AskAnswerHolder()
         {
-            Console.WriteLine("Tell me which question is the correct one: 1, 2, or 3?");
-            string rightAn = Console.ReadLine();
-            if (!int.TryParse(rightAn, out int rightAnIndex) || rightAnIndex < 1 || rightAnIndex > 3)
+            int rightAnIndex;
+            while (true)
             {
-                Console.WriteLine("Invalid input, please enter a value between 1 and 3");
-                return AskAnswerHolder();
+                Console.WriteLine("Tell me which question is the correct one: 1, 2, or 3?");
+                string rightAn = Console.ReadLine();
+                if (!int.TryParse(rightAn, out rightAnIndex) || rightAnIndex < 1 || rightAnIndex > 3)
+                {
+                    Console.WriteLine("Invalid input, please enter a value between 1 and 3");
+                }
+                else
+                {
+                    break;
+                }
             }
             return rightAnIndex;
         }
+
         public static void DisplayQuestion(string question, List<string> answers)
         {
             Console.WriteLine($"Question: {question}");

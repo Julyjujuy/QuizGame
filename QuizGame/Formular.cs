@@ -6,12 +6,9 @@ namespace QuizGame
     public class Formular
     {
         public string question;
-        public List<string> answers;
         public int answerIndex;
-        public Formular()
-        {
-            answers = new List<string>();
-        }
+        public List<string> answers = new List<string>();
+        
     }
 
 }
